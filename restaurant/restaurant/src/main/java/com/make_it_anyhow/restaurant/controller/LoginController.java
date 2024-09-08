@@ -1,8 +1,7 @@
-package com.make_it_anyhow.restaurant.user.controller;
+package com.make_it_anyhow.restaurant.controller;
 
-import com.make_it_anyhow.restaurant.user.dto.ResponseDto;
-import com.make_it_anyhow.restaurant.user.dto.UserLoginDto;
-import com.make_it_anyhow.restaurant.user.service.AccountService;
+import com.make_it_anyhow.restaurant.dto.UserLoginDto;
+import com.make_it_anyhow.restaurant.service.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +18,7 @@ public class LoginController {
     private final AccountService accountService;
     @Operation(summary = "login", description = "사용자 로그인")
     @PostMapping("/login")
-    public ResponseEntity<ResponseDto<Void>> login(@RequestBody @Validated UserLoginDto userDto) {
-        return ResponseEntity.ok(
-            ResponseDto.buildSuccessResponse(null)
-        );
+    public ResponseEntity<Void> login(@RequestBody @Validated UserLoginDto userDto) {
+        return ResponseEntity.ok().build();
     }
 }
