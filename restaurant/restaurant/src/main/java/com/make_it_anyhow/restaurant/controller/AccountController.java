@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/api/worklist")
+@RequestMapping("/api")
 @RestController
 @RequiredArgsConstructor
-public class LoginController {
+public class AccountController {
     private final AccountService accountService;
     @Operation(summary = "login", description = "사용자 로그인")
     @PostMapping("/login")
