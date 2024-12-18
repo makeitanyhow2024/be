@@ -1,20 +1,22 @@
 package com.make_it_anyhow.restaurant.service;
 
-import com.make_it_anyhow.restaurant.Entity.User;
-import com.make_it_anyhow.restaurant.Repository.UserRepository;
+import com.make_it_anyhow.restaurant.entity.User;
+import com.make_it_anyhow.restaurant.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
-public class AccountService {
+public class UserService {
 
     private final UserRepository userRepository;
 
     public void processOAuthPostLogin(OidcUser oidcUser) {
         String email = oidcUser.getEmail();
-        User existUser = userRepository.findByEmail(email);
+        Optional<User> existUser = userRepository.findByEmail(email);
 
         if (existUser == null) {
             User newUser = User.builder()
